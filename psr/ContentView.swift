@@ -31,6 +31,11 @@ struct ContentView: View {
         }
     }
     
+    func resetGame() -> Void {
+        humanScore = 0;
+        cpuScore = 0;
+    }
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors:[.cyan,.green]), startPoint: .topLeading, endPoint: .bottomLeading)
@@ -62,6 +67,20 @@ struct ContentView: View {
                             Image(hand);
                         }
                     }
+                    Spacer()
+                    Button(action: {
+                        resetGame();
+                        }) {
+                            Text("New Game")
+                                .frame(minWidth: 0, maxWidth: 200)
+                                .font(.system(size: 18))
+                                .padding()
+                                .foregroundColor(.black)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 25)
+                                        .stroke(Color.black, lineWidth: 2)
+                            )
+                        }
                     Spacer()
                     Text("Computer Chose")
                     if(cpuHand > -1) {
